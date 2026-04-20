@@ -6,10 +6,6 @@ import logging
 from PIL import Image
 import pytesseract
 
-try:
-    from KE import extract_keywords, load_models
-except ImportError:
-    pass
 
 logger = logging.getLogger(__name__)
 
