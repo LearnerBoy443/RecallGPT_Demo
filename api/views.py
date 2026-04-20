@@ -5,7 +5,6 @@ from django.shortcuts import render
 from .models import User, ChatSession, Message
 from .serializers import ChatSessionSerializer, MessageSerializer
 from .services import get_keybert_model, fix_broken_prompt, generate_image_pollinations, extract_text_from_image
-from KE import extract_keywords
 import os
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
