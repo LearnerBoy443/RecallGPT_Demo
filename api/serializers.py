@@ -4,14 +4,14 @@ from .models import User, ChatSession, Message
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'created_at']
-
-class MessageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Message
-        fields = ['id', 'session', 'role', 'content', 'image_path', 'uploaded_image_path', 'keywords', 'structured_prompt', 'created_at']
+        fields = '__all__'
 
 class ChatSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatSession
-        fields = ['id', 'user', 'title', 'created_at']
+        fields = '__all__'
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'
