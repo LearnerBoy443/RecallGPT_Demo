@@ -29,11 +29,14 @@ def fix_broken_prompt(prompt: str) -> str:
 
 def generate_image_pollinations(prompt: str, seed: int) -> str:
     url = f"https://image.pollinations.ai/prompt/{requests.utils.quote(prompt)}?seed={seed}&width=1024&height=1024&nologo=true&model=flux-realism"
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
+    try:
+        response = requests.get(url, stream=True, timeout=5)
+        response.raise_for_status()
+    except:
+        return None
     
     filename = f"{uuid.uuid4().hex}.jpg"
-    image_dir = os.path.join(settings.BASE_DIR, 'static', 'images')
+    image_dir = "/tmp"
     os.makedirs(image_dir, exist_ok=True)
     
     filepath = os.path.join(image_dir, filename)
