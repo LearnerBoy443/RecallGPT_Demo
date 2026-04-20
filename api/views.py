@@ -125,8 +125,8 @@ def chat(request):
     
     # Extract keywords
     try:
-        kw_model = get_keybert_model()
-        extracted = extract_keywords(kw_model, structured_prompt, top_n=5, use_mmr=True, diversity=0.7)
+        keywords_list = []
+        keywords_str = ""
         keywords_list = [res.keyword for res in extracted]
         keywords_str = ", ".join(keywords_list)
     except Exception as e:
