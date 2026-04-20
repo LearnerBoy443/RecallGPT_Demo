@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recall GPT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay active">
+        <div class="login-card">
+            <div class="login-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h2>Welcome to Recall GPT</h2>
+            <p>Please log in to continue to your creative studio.</p>
+            <form id="loginForm">
+                <input type="text" id="usernameInput" placeholder="Enter username..." required>
+                <input type="password" id="passwordInput" placeholder="Enter password..." required>
+                <button type="submit" class="btn-primary">Enter Studio <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App Layout -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button id="newChatBtn" class="btn-new-chat"><i class="fa-solid fa-plus"></i> New Chat</button>
+            </div>
+            
+            <div class="sidebar-history-container">
+                <p class="history-label">Previous Prompts</p>
+                <ul id="sessionList" class="session-list">
+                    <!-- Session list injected here -->
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <span id="displayUsername">User</span>
+                </div>
+                <button id="logoutBtn" class="btn-icon" title="Logout"><i class="fa-solid fa-sign-out"></i></button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <header class="chat-header">
+                <h2><i class="fa-solid fa-robot" style="color:var(--accent); margin-right:8px;"></i> <span id="currentSessionTitle">Select or start a chat</span></h2>
+            </header>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages go here -->
+            </div>
+
+            <div class="loading-indicator" id="loadingIndicator">
+                <div class="dot-typing"></div>
+                <span id="loadingText">Enhancing prompt & generating masterpiece...</span>
+            </div>
+
+            <footer class="chat-input-area">
+                <div id="attachmentPreviewArea" class="attachment-preview" style="display: none;">
+                    <img id="attachmentPreviewImg" src="" alt="Attachment Preview">
+                    <button class="remove-attachment" id="removeAttachmentBtn"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <form id="chatForm" autocomplete="off">
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <button type="button" id="attachBtn" class="btn-attach" disabled><i class="fa-solid fa-paperclip"></i></button>
+                    <input type="text" id="userInput" placeholder="Throw me a broken idea like 'cat moon'..." disabled required>
+                    <button type="submit" id="sendBtn" disabled><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+                <div class="input-footer-text">
+                    Recall GPT will automatically restructure fragmented prompts into detailed descriptions.
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <a id="downloadLink" class="btn-download" download><i class="fa-solid fa-download"></i> Download High-Res</a>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
