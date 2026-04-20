@@ -3,8 +3,7 @@ import uuid
 import requests
 from django.conf import settings
 import logging
-from PIL import Image
-import pytesseract
+
 
 
 logger = logging.getLogger(__name__)
@@ -45,11 +44,4 @@ def generate_image_pollinations(prompt: str, seed: int) -> str:
     return filename
 
 def extract_text_from_image(filepath: str) -> str:
-    """Uses OCR to extract text from a locally saved image."""
-    try:
-        img = Image.open(filepath)
-        text = pytesseract.image_to_string(img)
-        return text.strip()
-    except Exception as e:
-        logger.error(f"OCR failed: {e}")
-        return ""
+    return ""
